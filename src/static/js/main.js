@@ -16,7 +16,11 @@ dataApi();
 
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
+const lideres = document.querySelector('#lideres');
 
+const actualizarLideres = (cantidadLideres) => {
+  lideres.innerHTML = cantidadLideres;
+}
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 
