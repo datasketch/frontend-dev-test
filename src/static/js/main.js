@@ -4,6 +4,15 @@ import { plotByGenderCtx } from './contexts'
 const endpoint = "https://raw.githubusercontent.com/datasketch/frontend-dev-test/master/data/lideres-sociales.json"
 
 // TODO: Haz una petición HTTP al endpoint declarado para obtener los datos
+const dataApi = async () => {
+  const api = await fetch(endpoint);
+  const data = await api.json();
+  console.log(data);
+
+  actualizarLideres(data.length)
+}
+
+dataApi();
 
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
