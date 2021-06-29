@@ -5,8 +5,25 @@ const endpoint = "https://raw.githubusercontent.com/datasketch/frontend-dev-test
 
 // TODO: Haz una petición HTTP al endpoint declarado para obtener los datos
 
+let lidersArray = [];
+
+async function fetchSocialLiders () {
+  try{
+    const fetchedData = await fetch(endpoint);
+    const result = await fetchedData.json();
+    lidersArray = result;
+  } catch (error) {
+    if (error) throw error;
+  };
+};
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
+
+window.addEventListener("load", async () => {
+  const lidersNumber = document.getElementsByClassName("section-title")[0];
+  await fetchSocialLiders();
+  lidersNumber.innerHTML = lidersArray.length;
+});
 
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
