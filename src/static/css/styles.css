@@ -1,0 +1,48 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: 16px;
+  color: #293845;
+}
+
+.navbar {
+  background-color: #293845;
+  padding: 1rem;
+}
+
+.section {
+  padding: 4rem 1rem;
+  background-color: rgb(251, 253, 254);
+}
+
+.section-lg {
+  padding: 8rem 1rem;
+  background-color: rgb(251, 253, 254);
+}
+
+.narrow-container {
+  margin: 0 auto;
+  max-width: 36rem;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 6rem;
+}
+
+.section-desc {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
