@@ -9,7 +9,7 @@
 html,
 body {
   box-sizing: border-box;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-style: 16px;
   color: #293845;
 }
@@ -48,8 +48,13 @@ body {
 }
 
 .charts {
-  margin-top: 2.5rem;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 2.5rem;
+  margin: 2.5rem 0;
+}
+
+.charts__item {
+  max-width: 100%;
 }
