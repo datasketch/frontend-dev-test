@@ -7,10 +7,10 @@ Cuando termines, crea un pull request en este repositorio con tu nombre como tí
 ## Requisitos
 
 - Haz una petición HTTP al endpoint declarado en el archivo [main.js](https://github.com/datasketch/frontend-dev-test/blob/master/src/static/js/main.js) para obtener los datos.
-- Actualiza el HTML con el número de líderes sociales asesinados
+- Actualiza el HTML con el número de líderes sociales asesinados.
 - Lee la documentación de [Chart.js](https://www.chartjs.org/docs/latest/) y actualiza las propiedades marcadas con FIXME para tener un bar chart de líderes sociales asesinados por género.
-- Haz un line chart que muestre el número de líderes sociales asesinados por año
-- La página no es responsive con los gráficos en su lugar. Soluciona ese problema
+- Haz un line chart que muestre el número de líderes sociales asesinados por año.
+- La página no es responsive con los gráficos en su lugar. Soluciona ese problema.
 
 :heavy_check_mark: Si necesitas instalar dependencias adicionales para completar los requisitos, puedes hacerlo sin ningún problema.
 
