@@ -13,5 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^2.3.8"
+  },
+  "dependencies": {
+    "chart.js": "^3.4.0"
   }
 }

@@ -1,0 +1,1 @@
+export const plotByGenderCtx = document.getElementById('plot-by-gender').getContext('2d')
