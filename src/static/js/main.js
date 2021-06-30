@@ -36,18 +36,25 @@ async function onPageLoad () {
 
   //extracting the years where the lidders were killed in
   const availableYears = [];
-  const rawDates = [...new Set(lidersArray.map(item => {
+  const rawDates = [];
+  [...new Set(lidersArray.map(item => {
     if (typeof item.fecha === "string"){
       const year = item.fecha.substr(0, 4);
+      rawDates.push(item.fecha.substr(0, 4));
       if(!availableYears.includes(year)) availableYears.push(item.fecha.substr(0, 4));
-    }
+    };
   }))];
 
   //extracting the  kills amount per year
-  
-  return {genres, availableYears};
+  const killsByYear = [];
+  availableYears.forEach(year => {
+    const amount = rawDates.filter(date => date === year).length;
+    killsByYear.push(amount);
+  });
+ 
+  return {genres, availableYears, killsByYear};
 };
-const {genres, availableYears} = await onPageLoad();
+const {genres, availableYears, killsByYear} = await onPageLoad();
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 
@@ -83,27 +90,27 @@ const plotByYearChart = new Chart(plotByYearCtx, {
     datasets: [
       {
         label: 'Líderes sociales asesinados por año',
-        data: [],
+        data: killsByYear,
         borderColor: ["#348F6C"],
         borderWidth: 4,
       },
     ],
   },
   options: {
-    
+    responsive: true,
+    maintainAspectRatio: true,
     scales: {
       y: {
         beginAtZero: true,
-        max: 20,
       },
     },
     elements: {
       point: {
-        radius: 7,
+        radius: 10,
         pointStyle: "cros",
         backgroundColor: "#46C292",
-        hoverRadius: 10,
-        hoverBorderWidth: 3
+        hoverRadius: 13,
+        hoverBorderWidth: 6
       },
       line: {
         tension: 0,
