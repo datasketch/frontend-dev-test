@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <nav class="navbar">
@@ -19,7 +21,7 @@
   <main>
     <section class="section-lg text-center">
       <div class="narrow-container">
-        <h1 class="section-title">0</h1>
+        <h1 id="contador" class="section-title">0</h1>
         <p class="section-desc">líderes sociales en Colombia han sido asesinados desde el primero de Enero de 2016.</p>
       </div>
     </section>
@@ -27,7 +29,7 @@
       <h2 class="section-title text-center">Stats</h2>
       <div class="charts">
         <!-- FIXME: Hacerlo responsive -->
-        <canvas id="plot-by-gender"></canvas>
+        <canvas id="plot-by-gender"></canvas><br>
         <canvas id="plot-by-year"></canvas>
       </div>
     </section>
