@@ -22,22 +22,23 @@ lideres.innerHTML = result.length;
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 const lideresFemenino = result.filter(lider => lider.genero == 'Femenino');
 const lideresMasculino = result.filter(lider => lider.genero == 'Masculino');
-const Transgénero = result.filter(lider => lider.genero != 'Masculino' && lider.genero != 'Femenino');
+const lideresTransgenero = result.filter(lider => lider.genero != 'Masculino' && lider.genero != 'Femenino');
+
+const data = {
+  'Femenino': lideresFemenino.length,
+  'Masculino': lideresMasculino.length,
+  'Transgénero': lideresTransgenero.length
+}
 
 const plotByGenderChart = new Chart(plotByGenderCtx, {
   type: 'bar',
   data: {
     // FIXME: Actualiza esta propiedad
-    labels: ['Femenino', 'Masculino', 'Transgénero'],
     datasets: [
       {
         label: 'Líderes sociales asesinados por género',
         // FIXME: Actualiza esta propiedad
-        data: [
-          lideresFemenino.length,
-          lideresMasculino.length,
-          Transgénero.length
-        ],
+        data,
         backgroundColor: [
           '#086788',
           '#07A0C3',
