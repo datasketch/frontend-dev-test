@@ -10,8 +10,9 @@ html,
 body {
   box-sizing: border-box;
   font-family: "IBM Plex Sans", sans-serif;
-  font-style: 16px;
+  font-size: 16px;
   color: #293845;
+  width: 100vw;
 }
 
 .navbar {
@@ -49,7 +50,6 @@ body {
 
 .charts {
   margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
