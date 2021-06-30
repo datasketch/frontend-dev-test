@@ -37,6 +37,9 @@ body {
 
 .section-title {
   font-size: 6rem;
+  -webkit-animation: spinit 0.2s 5;
+  -moz-animation: spinit 0.2s 5;
+  animation: spinit 0.2s 5;
 }
 
 .section-desc {
