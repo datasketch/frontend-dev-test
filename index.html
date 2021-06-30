@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="src/static/css/styles.css">
+  <title>Líderes sociales en Colombia</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="">
+      <img src="src/static/images/logo_h.svg" alt="Logo datasketch">
+    </a>
+  </nav>
+  <main>
+    <section class="section-lg text-center">
+      <div class="narrow-container">
+        <h1 class="section-title" id="lideresAsesinados">0</h1>
+        <p class="section-desc">líderes sociales en Colombia han sido asesinados desde el primero de Enero de 2016.</p>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title text-center">Stats</h2>
+      <div class="charts">
+        <!-- FIXME: Hacerlo responsive -->
+        <canvas id="plot-by-gender" class="plotGender"></canvas>
+        <canvas id="plot-by-year" class="plotYear" ></canvas>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.js"></script>
+  <script type="module" src="src/static/js/main.js"></script>
+</body>
+</html>
