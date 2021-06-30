@@ -47,9 +47,30 @@ body {
   text-align: center;
 }
 
-.charts {
-  margin-top: 2.5rem;
+/* .charts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
+} */
+
+.charts {
+  margin-top: 2.5rem;
+  display: flex;
+}
+
+.charts canvas {
+  padding: 40px;
+  max-width: 50%;
+  max-height: 500px;
+}
+
+@media (max-width: 768px) {
+  .charts {
+    flex-direction: column;
+  }
+
+  .charts canvas {
+    padding: 0;
+    max-width: 100%;
+  }
 }
