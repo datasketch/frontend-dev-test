@@ -47,12 +47,6 @@ body {
   text-align: center;
 }
 
-/* .charts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
-} */
-
 .charts {
   margin-top: 2.5rem;
   display: flex;

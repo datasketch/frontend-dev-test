@@ -4,23 +4,18 @@ import { plotByGenderCtx, plotByYearCtxLine } from './contexts'
 
 const endpoint = "https://raw.githubusercontent.com/datasketch/frontend-dev-test/master/data/lideres-sociales.json"
 
-// TODO: Haz una petición HTTP al endpoint declarado para obtener los datos
 const dataApi = async () => {
   const api = await fetch(endpoint);
   const data = await api.json();
- // actualizarLideres(data.length)
 
   return data;
 }
 
 const result = await dataApi();
 
-
-// TODO: Actualiza el HTML con el número de líderes sociales asesinados
 const lideres = document.querySelector('#lideres');
 lideres.innerHTML = result.length;
 
-// TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 const lideresFemenino = result.filter(lider => lider.genero == 'Femenino');
 const lideresMasculino = result.filter(lider => lider.genero == 'Masculino');
 const lideresTransgenero = result.filter(lider => lider.genero != 'Masculino' && lider.genero != 'Femenino');
@@ -34,11 +29,9 @@ const data = {
 const plotByGenderChart = new Chart(plotByGenderCtx, {
   type: 'bar',
   data: {
-    // FIXME: Actualiza esta propiedad
     datasets: [
       {
         label: 'Líderes sociales asesinados por género',
-        // FIXME: Actualiza esta propiedad
         data,
         backgroundColor: [
           '#086788',
@@ -51,10 +44,8 @@ const plotByGenderChart = new Chart(plotByGenderCtx, {
   }
 })
 
-// console.log(result)
 const years = []
 const yearsData = result.forEach(year => {
-  // years.push(year.fecha)
   years.push(new moment(year.fecha).format('YYYY'))
 });
 
@@ -62,23 +53,16 @@ const labelsFiltrado = years.filter((year, index) => years.indexOf(year) == inde
 
 const lideresPorAnio = labelsFiltrado.map(lider => result.filter(result => new moment(result.fecha).format('YYYY') == lider).length)
 
-//console.log(lideresPorAnio)
-
-
 const plotByYearChartLine = new Chart(plotByYearCtxLine, {
   type: 'line',
   data: {
-    // FIXME: Actualiza esta propiedad
     labels: labelsFiltrado,
     datasets: [
       {
         label: 'Líderes sociales asesinados por año',
-        // FIXME: Actualiza esta propiedad
         data: lideresPorAnio,
         borderColor: 'rgb(75, 192, 192)',
       }
     ]
   }
 })
-
-// TODO: Siguiendo la misma lógica, haz un line chart que muestre el número de líderes sociales asesinados por año
