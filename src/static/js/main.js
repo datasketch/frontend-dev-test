@@ -63,7 +63,7 @@ function counter_gender(obj) {
 }
 
 
-// Objeto de conteo
+// Objeto de conteo 
 let count_gender = counter_gender(json_ls);
 // console.log("Conteo por genero",count_gender);
 
@@ -94,10 +94,13 @@ let count_gender = counter_gender(json_ls);
 
 // TODO: Siguiendo la misma lógica, haz un line chart que muestre el número de líderes sociales asesinados por año
 
+//Retorno por fecha
 function get_year(year){
   return new Date(year).getFullYear().toString();
 }
 
+
+// Funcion tipo objeto de victimas por año
 function counter_year(obj) {
   let count_2016 = 0;
   let count_2017 = 0;
@@ -127,10 +130,12 @@ function counter_year(obj) {
     '2020':count_2020,
   }
 }
+
+// Objetos tipo años y totales
 let years = Object.keys(counter_year(clean_ls));
 let count_for_years = Object.values(counter_year(clean_ls));
 
-console.log(typeof years);
+// console.log(typeof years);
 // console.log(Object.values(counter_year(clean_ls)));
 
 // Object.keys(counter_year(clean_ls)).toString()
@@ -146,5 +151,8 @@ const plotByYearChart = new Chart (Plot.plotByYearCtx,{
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
       }] 
+  },
+  options:{
+    responsive:true
   }
 })
