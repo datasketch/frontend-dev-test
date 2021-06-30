@@ -1,6 +1,5 @@
 import Chart from "chart.js/auto";
-import { plotByGenderCtx } from "./contexts";
-import { plotByYearCtx } from "./contexts";
+import canvaElement from "./contexts";
 
 const endpoint =
   "https://raw.githubusercontent.com/datasketch/frontend-dev-test/master/data/lideres-sociales.json";
@@ -18,7 +17,6 @@ function makeRequest() {
   xhttp.open("GET", endpoint, true);
   xhttp.send();
 }
-makeRequest();
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
 function getData(data) {
@@ -36,7 +34,6 @@ function getData(data) {
     h1Tag[0].innerHTML = length;
   }
 }
-getData();
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 
@@ -63,7 +60,7 @@ const countByGender = (data) => {
 
 function dataChartGender(gender, count) {
   if (gender && count) {
-    const plotByGenderChart = new Chart(plotByGenderCtx, {
+    const plotByGenderChart = new Chart(canvaElement.plot_gender, {
       type: "bar",
       data: {
         labels: gender,
@@ -71,7 +68,7 @@ function dataChartGender(gender, count) {
           {
             label: "Líderes sociales asesinados por género",
             data: count,
-            backgroundColor: ["#086788", "#07A0C3", "#f0c808", "#ef798a"],
+            backgroundColor: ["#086788", "#07A0C3", "#ef798a", "#f0c808"],
           },
         ],
       },
@@ -88,7 +85,7 @@ function dataChartYear(data) {
       if (!dates.includes(date) && !isNaN(date)) {
         dates.push(date);
       }
-      return dates;
+      return dates.sort((a, b) => a - b);
     });
 
     let count_by_year = [];
@@ -99,7 +96,7 @@ function dataChartYear(data) {
       )
     );
 
-    const plotByYearChart = new Chart(plotByYearCtx, {
+    const plotByYearChart = new Chart(canvaElement.plot_year, {
       type: "line",
       data: {
         // FIXME: Actualiza esta propiedad
@@ -117,3 +114,4 @@ function dataChartYear(data) {
     });
   }
 }
+document.addEventListener("DOMContentLoaded", makeRequest());
