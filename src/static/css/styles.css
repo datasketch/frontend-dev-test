@@ -36,11 +36,11 @@ body {
 }
 
 .section-title {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 .section-desc {
-  font-size: 1.5rem;
+  font-size: calc(1em + 1vw);
 }
 
 .text-center {
@@ -48,8 +48,51 @@ body {
 }
 
 .charts {
+  width: 100%;
+  height: inherit;
   margin-top: 2.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
   grid-gap: 1.5rem;
+  
+}
+
+.plotGenre{
+  width: 95%;
+  margin: auto;
+}
+
+.plotGenre > canvas {
+  font-size: 1.2rem;
+}
+
+.plotYear{
+  width: 95%;
+  margin: auto;
+}
+
+.error{
+  margin: 2rem auto;
+  font-size: 4rem;
+}
+
+.note{
+  font-size: 3.5 rem;
+  margin: 1rem 0;
+}
+
+.disabled{
+  display: none;
+}
+
+
+@media screen and (max-width:1024px){
+  .charts{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  
 }
