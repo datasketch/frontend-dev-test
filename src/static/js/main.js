@@ -23,19 +23,31 @@ const lidersArray = await fetchSocialLiders();
 window.addEventListener("load", onPageLoad);
 
 async function onPageLoad () {
+
   //modifying the liders amount contained in the html <H1> tag
   const lidersNumber = document.getElementsByClassName("section-title")[0];
   lidersNumber.innerHTML = lidersArray.length -1;
+
   //extracting the amount of liders by genres
   let genres = {male: 0, female: 0, transgender: 0};
   genres.male = await lidersArray.filter(lider => lider.genero === "Masculino").length;
   genres.female = await lidersArray.filter(lider => lider.genero === "Femenino").length;
   genres.transgender = await lidersArray.filter(lider => lider.genero === "Transgénero").length;
+
   //extracting the years where the lidders were killed in
+  const availableYears = [];
+  const rawDates = [...new Set(lidersArray.map(item => {
+    if (typeof item.fecha === "string"){
+      const year = item.fecha.substr(0, 4);
+      if(!availableYears.includes(year)) availableYears.push(item.fecha.substr(0, 4));
+    }
+  }))];
+
   //extracting the  kills amount per year
-  return {genres};
+  
+  return {genres, availableYears};
 };
-const {genres} = await onPageLoad();
+const {genres, availableYears} = await onPageLoad();
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 
@@ -67,7 +79,7 @@ const plotByGenderChart = new Chart(plotByGenderCtx, {
 const plotByYearChart = new Chart(plotByYearCtx, {
   type: "line",
   data: {
-    labels: [],
+    labels: availableYears,
     datasets: [
       {
         label: 'Líderes sociales asesinados por año',
