@@ -11,7 +11,6 @@ function makeRequest() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       getData(xhttp.responseText);
-      countByGender(xhttp.responseText);
     }
   };
   xhttp.open("GET", endpoint, true);
@@ -20,18 +19,24 @@ function makeRequest() {
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
 function getData(data) {
-  var h1Tag = document.getElementsByClassName("section-title");
+  let h1Tag = document.getElementById("leaders_assassinated");
+  let started_date = new Date("2016-01-02").toLocaleDateString();
   if (data) {
-    let dataLideres = JSON.parse(data);
-    var length = 0;
+    const dataLideres = JSON.parse(data);
+    let length = 0;
     dataLideres.map((item) => {
-      if (item.nombre) {
+      if (
+        Object.keys(item).length !== 0 &&
+        new Date(item.fecha).toLocaleDateString() >= started_date
+      ) {
         length++;
       }
       return length;
     });
 
-    h1Tag[0].innerHTML = length;
+    h1Tag.innerHTML = length;
+    countByGender(dataLideres);
+    countByYear(dataLideres);
   }
 }
 
@@ -39,22 +44,20 @@ function getData(data) {
 
 const countByGender = (data) => {
   if (data) {
-    let dataLideres = JSON.parse(data);
-    let generos = [];
+    let genders = [];
 
-    dataLideres.map((item) => {
-      if (!generos.includes(item.genero) && item.genero) {
-        generos.push(item.genero);
+    data.map((item) => {
+      if (!genders.includes(item.genero) && Object.keys(item).length !== 0) {
+        genders.push(item.genero);
       }
-      return generos;
+      return genders;
     });
 
-    let count = [];
-    generos.forEach((gender) =>
-      count.push(dataLideres.filter((item) => item.genero === gender).length)
+    let count_murders = [];
+    genders.forEach((gender) =>
+      count_murders.push(data.filter((item) => item.genero === gender).length)
     );
-    dataChartGender(generos, count);
-    dataChartYear(dataLideres);
+    dataChartGender(genders, count_murders);
   }
 };
 
@@ -77,7 +80,7 @@ function dataChartGender(gender, count) {
 }
 
 // TODO: Siguiendo la misma lógica, haz un line chart que muestre el número de líderes sociales asesinados por año
-function dataChartYear(data) {
+const countByYear = (data) => {
   if (data) {
     let dates = [];
     data.map((item) => {
@@ -88,30 +91,32 @@ function dataChartYear(data) {
       return dates.sort((a, b) => a - b);
     });
 
-    let count_by_year = [];
+    let count_murders = [];
     dates.forEach((year) =>
-      count_by_year.push(
+      count_murders.push(
         data.filter((item) => new Date(item.fecha).getFullYear() === year)
           .length
       )
     );
-
-    const plotByYearChart = new Chart(canvaElement.plot_year, {
-      type: "line",
-      data: {
-        // FIXME: Actualiza esta propiedad
-        labels: dates,
-        datasets: [
-          {
-            label: "Líderes sociales asesinados por año",
-            // FIXME: Actualiza esta propiedad
-            data: count_by_year,
-            backgroundColor: ["#64917e", "#07A0C3", "#f0c808", "#ef798a"],
-            fontSize: ["15px"],
-          },
-        ],
-      },
-    });
+    dataChartYear(dates, count_murders);
   }
+};
+
+function dataChartYear(dates, count_murders) {
+  const plotByYearChart = new Chart(canvaElement.plot_year, {
+    type: "line",
+    data: {
+      // FIXME: Actualiza esta propiedad
+      labels: dates,
+      datasets: [
+        {
+          label: "Líderes sociales asesinados por año",
+          // FIXME: Actualiza esta propiedad
+          data: count_murders,
+          backgroundColor: ["#64917e", "#07A0C3", "#f0c808", "#ef798a"],
+        },
+      ],
+    },
+  });
 }
 document.addEventListener("DOMContentLoaded", makeRequest());
