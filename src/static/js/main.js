@@ -60,7 +60,9 @@ const yearsData = result.forEach(year => {
 
 const labelsFiltrado = years.filter((year, index) => years.indexOf(year) == index)
 
-console.log(labelsFiltrado)
+const lideresPorAnio = labelsFiltrado.map(lider => result.filter(result => new moment(result.fecha).format('YYYY') == lider).length)
+
+//console.log(lideresPorAnio)
 
 
 const plotByYearChartLine = new Chart(plotByYearCtxLine, {
@@ -70,9 +72,9 @@ const plotByYearChartLine = new Chart(plotByYearCtxLine, {
     labels: labelsFiltrado,
     datasets: [
       {
-        label: 'Líderes sociales asesinados por género',
+        label: 'Líderes sociales asesinados por año',
         // FIXME: Actualiza esta propiedad
-        data: [10,45,65,46,54,31],
+        data: lideresPorAnio,
         borderColor: 'rgb(75, 192, 192)',
       }
     ]
