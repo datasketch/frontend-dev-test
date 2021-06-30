@@ -25,7 +25,7 @@ body {
 }
 
 .section-lg {
-  padding: 8rem 1rem;
+  padding: 5rem 1rem;
   background-color: rgb(251, 253, 254);
 }
 
@@ -37,9 +37,6 @@ body {
 
 .section-title {
   font-size: 6rem;
-  -webkit-animation: spinit 0.2s 5;
-  -moz-animation: spinit 0.2s 5;
-  animation: spinit 0.2s 5;
 }
 
 .section-desc {
@@ -53,6 +50,6 @@ body {
 .charts {
   margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2.5rem;
 }

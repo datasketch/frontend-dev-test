@@ -20,7 +20,7 @@ function makeRequest() {
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
 function getData(data) {
   let h1Tag = document.getElementById("leaders_assassinated");
-  let started_date = new Date("2016-01-02").toLocaleDateString();
+  let started_date = new Date("2016-01-01").toLocaleDateString();
   if (data) {
     const dataLideres = JSON.parse(data);
     let length = 0;
