@@ -18,7 +18,6 @@ function makeRequest() {
   xhttp.open("GET", endpoint, true);
   xhttp.send();
 }
-makeRequest();
 
 // TODO: Actualiza el HTML con el número de líderes sociales asesinados
 function getData(data) {
@@ -36,7 +35,6 @@ function getData(data) {
     h1Tag[0].innerHTML = length;
   }
 }
-getData();
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 
@@ -88,7 +86,7 @@ function dataChartYear(data) {
       if (!dates.includes(date) && !isNaN(date)) {
         dates.push(date);
       }
-      return dates;
+      return dates.sort((a, b) => a - b);
     });
 
     let count_by_year = [];
@@ -117,3 +115,4 @@ function dataChartYear(data) {
     });
   }
 }
+document.addEventListener("DOMContentLoaded", makeRequest());
