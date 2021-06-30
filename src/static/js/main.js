@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto'
-import { plotByGenderCtx } from './contexts'
+import moment from 'moment'
+import { plotByGenderCtx, plotByYearCtxLine } from './contexts'
 
 const endpoint = "https://raw.githubusercontent.com/datasketch/frontend-dev-test/master/data/lideres-sociales.json"
 
@@ -45,6 +46,34 @@ const plotByGenderChart = new Chart(plotByGenderCtx, {
           '#f0c808',
           '#ef798a'
         ]
+      }
+    ]
+  }
+})
+
+// console.log(result)
+const years = []
+const yearsData = result.forEach(year => {
+  // years.push(year.fecha)
+  years.push(new moment(year.fecha).format('YYYY'))
+});
+
+const labelsFiltrado = years.filter((year, index) => years.indexOf(year) == index)
+
+console.log(labelsFiltrado)
+
+
+const plotByYearChartLine = new Chart(plotByYearCtxLine, {
+  type: 'line',
+  data: {
+    // FIXME: Actualiza esta propiedad
+    labels: labelsFiltrado,
+    datasets: [
+      {
+        label: 'Líderes sociales asesinados por género',
+        // FIXME: Actualiza esta propiedad
+        data: [10,45,65,46,54,31],
+        borderColor: 'rgb(75, 192, 192)',
       }
     ]
   }
