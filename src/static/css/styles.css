@@ -48,8 +48,31 @@ body {
 }
 
 .charts {
-  margin-top: 2.5rem;
+  margin: 1.5rem 3rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.charts-container {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+}
+
+@media screen and (max-width: 425px) {
+  .section-title {
+    font-size: 4rem;
+  }
+
+  .section-desc {
+    font-size: 1.5rem;
+  }
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  .charts-container {
+    width: 95%;
+  }
 }
