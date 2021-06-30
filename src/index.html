@@ -16,6 +16,7 @@
       <img src="/static/images/logo_h.svg" alt="Logo datasketch">
     </a>
   </nav>
+
   <main>
     <section class="section-lg text-center">
       <div class="narrow-container">
@@ -23,15 +24,17 @@
         <p class="section-desc">líderes sociales en Colombia han sido asesinados desde el primero de Enero de 2016.</p>
       </div>
     </section>
+
     <section class="section">
       <h2 class="section-title text-center">Stats</h2>
       <div class="charts">
-        <!-- FIXME: Hacerlo responsive -->
-        <canvas id="plot-by-gender"></canvas>
-        <canvas id="plot-by-year"></canvas>
+        <canvas width="400" height="400" id="plot-by-gender"></canvas>
+        <canvas width="400" height="300" id="plot-by-year"></canvas>
       </div>
     </section>
+
   </main>
+
   <script type="module" src="/static/js/main.js"></script>
 </body>
 </html>
