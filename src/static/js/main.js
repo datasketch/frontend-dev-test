@@ -37,23 +37,26 @@ const updateTotalLeaders = leaders => {
 
 // TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
 const getTotalGenderFemale = leaders => leaders.reduce((accumulator, current) => current.genero === "Femenino" ? accumulator + 1 : accumulator, 0)
-const getTotalGenderMale = leaders => leaders.length - getTotalGenderFemale(leaders)
+const getTotalGenderMale = leaders => leaders.reduce((accumulator, current) => current.genero === "Masculino" ? accumulator + 1 : accumulator, 0)
+const getTotalGenderTrans = leaders => leaders.reduce((accumulator, current) => current.genero === "Transgénero" ? accumulator + 1 : accumulator, 0)
 const drawChartGenders = leaders => {
     const totalMale = getTotalGenderMale(leaders)
     const totalFemale = getTotalGenderFemale(leaders)
+    const totalTrans = getTotalGenderTrans(leaders)
     const plotByGenderChart = new Chart(plotByGenderCtx, {
         type: 'bar',
         data: {
             // FIXME: Actualiza esta propiedad
-            labels: ["Hombres", "Mujeres"],
+            labels: ["Hombres", "Mujeres", "Transgénero"],
             datasets: [{
                 label: 'Líderes sociales asesinados por género',
                 // FIXME: Actualiza esta propiedad
 
-                data: [totalMale, totalFemale],
+                data: [totalMale, totalFemale, totalTrans],
                 backgroundColor: [
                     '#080426',
-                    '#c307bd'
+                    '#c307bd',
+                    '#00db9d'
                 ],
                 color: '#000',
 
