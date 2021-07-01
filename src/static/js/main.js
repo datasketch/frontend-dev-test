@@ -178,9 +178,9 @@ console.log(Data.length);
           }
         }
       })
-
+      // TODO: Siguiendo la misma lógica, haz un line chart que muestre el número de líderes sociales asesinados por año
+      
       /*Setting the second bar chart with year as "labels" on the x axis*/
-
       const plotByYearChart = new Chart(plotByYearCtx, {
         type: 'line',
         data: {
