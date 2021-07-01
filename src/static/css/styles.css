@@ -20,12 +20,12 @@ body {
 }
 
 .section {
-  padding: 4rem 1rem;
+  padding: 8rem 1rem;
   background-color: rgb(251, 253, 254);
 }
 
 .section-lg {
-  padding: 8rem 1rem;
+  padding: 4rem 1rem;
   background-color: rgb(251, 253, 254);
 }
 
@@ -48,8 +48,11 @@ body {
 }
 
 .charts {
+
   margin-top: 2.5rem;
-  display: grid;
+  /*setting both charts as a centered column*/
+  display: flex;
+  flex-direction: column;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
 }
