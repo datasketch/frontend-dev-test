@@ -1,55 +1,104 @@
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  box-sizing: border-box;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-style: 16px;
-  color: #293845;
+    box-sizing: border-box;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-style: 16px;
+    color: #293845;
+}
+
+.contenedor {
+    background-color: #fff;
+    color: #000;
+}
+
+#vertical {
+    display: none;
 }
 
 .navbar {
-  background-color: #293845;
-  padding: 1rem;
+    background-color: #293845;
+    padding: 1rem;
 }
 
 .section {
-  padding: 4rem 1rem;
-  background-color: rgb(251, 253, 254);
+    padding: 4rem 1rem;
+    background-color: rgb(202, 203, 206);
+    color: rgb(13, 4, 49);
 }
 
 .section-lg {
-  padding: 8rem 1rem;
-  background-color: rgb(251, 253, 254);
+    padding: 3rem 1rem;
+    background-color: rgb(202, 203, 206);
+    color: rgb(13, 4, 49);
 }
 
 .narrow-container {
-  margin: 0 auto;
-  max-width: 36rem;
-  width: 100%;
+    margin: 0 auto;
+    max-width: 36rem;
+    width: 100%;
 }
 
 .section-title {
-  font-size: 6rem;
+    font-size: 6rem;
 }
 
 .section-desc {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .charts {
-  margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(1, .5fr);
+    grid-gap: 1.5rem;
+}
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+    .section-lg {
+        background-color: rgb(251, 253, 254);
+        color: rgb(13, 4, 49);
+    }
+    .section {
+        background-color: rgb(251, 253, 254);
+        color: rgb(13, 4, 49);
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1000px) {
+    .section-lg {
+        background-color: rgb(202, 203, 206);
+        color: rgb(13, 4, 49);
+    }
+    .section {
+        background-color: rgb(251, 253, 254);
+        color: #000;
+    }
+}
+
+@media screen and (max-width:320px) {
+    #contenedor {
+        display: none;
+    }
+    #vertical {
+        display: block;
+        position: fixed;
+        width: 320px;
+        height: 100%;
+        z-index: 1;
+        background-image: url(../images/rotate.jpg);
+        background-size: cover;
+        background-position: center;
+    }
 }
