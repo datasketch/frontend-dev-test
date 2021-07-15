@@ -1,36 +1,53 @@
-import Chart from 'chart.js/auto'
-import { plotByGenderCtx } from './contexts'
+import { plotByGenderCtx, plotByYearCtx } from './contexts'
+import { createChart } from './utils'
 
 const endpoint = "https://raw.githubusercontent.com/datasketch/frontend-dev-test/master/data/lideres-sociales.json"
 
-// TODO: Haz una petición HTTP al endpoint declarado para obtener los datos
 
+;(async () => {
+  try {
+    const response = await fetch(endpoint)
+    const data = await response.json()
+    document.querySelector('.section-title').textContent = data.length
 
-// TODO: Actualiza el HTML con el número de líderes sociales asesinados
+    const initialValue = {
+      byGender: {},
+      byYear: {}
+    }
 
+    const aggregatedData = data.reduce((result, record) => {
+      const gender = record.genero
+      const date = record.fecha
 
-// TODO: Lee la documentación de Chart.js y actualiza las propiedades marcadas con FIXME en el snippet para tener un bar chart de líderes sociales asesinados por género
-
-/* const plotByGenderChart = new Chart(plotByGenderCtx, {
-  type: 'bar',
-  data: {
-    // FIXME: Actualiza esta propiedad
-    labels: [],
-    datasets: [
-      {
-        label: 'Líderes sociales asesinados por género',
-        // FIXME: Actualiza esta propiedad
-        data: [],
-        backgroundColor: [
-          '#086788',
-          '#07A0C3',
-          '#f0c808',
-          '#ef798a'
-        ]
+      if (!gender || !date) {
+        return result
       }
-    ]
+
+      const year = new Date(date).getFullYear()
+
+      result.byYear[year] = result.byYear[year] ? result.byYear[year] +  1 : 1
+      result.byGender[gender] = result.byGender[gender] ? result.byGender[gender] + 1 : 1
+
+      return result
+    }, initialValue)
+
+    const plotByGenderChart = createChart({
+      ctx: plotByGenderCtx,
+      type: 'bar',
+      label: 'Líderes sociales asesinados por género',
+      dataLabels: Object.keys(aggregatedData.byGender),
+      dataValues: Object.values(aggregatedData.byGender),
+    })
+    
+    const plotByYearChart = createChart({
+      ctx: plotByYearCtx,
+      type: 'line',
+      label: 'Líderes sociales asesinados por año',
+      dataLabels: Object.keys(aggregatedData.byYear),
+      dataValues: Object.values(aggregatedData.byYear),
+    })
+
+  } catch (error) {
+
   }
-}) */
-
-
-// TODO: Siguiendo la misma lógica, haz un line chart que muestre el número de líderes sociales asesinados por año
+})()
