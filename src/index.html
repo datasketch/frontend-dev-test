@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
   <title>Líderes sociales en Colombia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/styles.css">
 </head>
+
 <body>
   <nav class="navbar">
     <a href="">
@@ -17,21 +19,32 @@
     </a>
   </nav>
   <main>
+    <!-- Mensaje de error que se activara cuando la peticion falle -->
+    <h2 class="text-center disabled error">Ocurrio un error en la consulta</h2>
     <section class="section-lg text-center">
       <div class="narrow-container">
         <h1 class="section-title">0</h1>
-        <p class="section-desc">líderes sociales en Colombia han sido asesinados desde el primero de Enero de 2016.</p>
+        <p class="section-desc">Líderes sociales en Colombia que han sido asesinados desde el primero de Enero de 2016.
+        </p>
       </div>
     </section>
     <section class="section">
       <h2 class="section-title text-center">Stats</h2>
       <div class="charts">
         <!-- FIXME: Hacerlo responsive -->
-        <canvas id="plot-by-gender"></canvas>
-        <canvas id="plot-by-year"></canvas>
+        <div class="plotGenre">
+          <canvas id="plot-by-gender"></canvas>
+        </div>
+        <div class="plotYear">
+          <canvas id="plot-by-year"></canvas>
+        </div>
       </div>
+      <p class="note"> <b>Nota:</b> Existe un registro que no cuenta con fecha de deceso por esta razon en la grafica de lideres sociales
+        muertos por año solo hay 697 datos.
+      </p>
     </section>
   </main>
   <script type="module" src="/static/js/main.js"></script>
 </body>
+
 </html>
